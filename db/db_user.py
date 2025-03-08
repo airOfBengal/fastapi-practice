@@ -31,3 +31,9 @@ def update(db:Session, id: int, request: UserBase):
         DbUser.password: Hash.bcrypt(request.password)
     })
     db.commit()
+
+def delete(db: Session, id: int):
+    user = get_user(db, id)
+    db.delete(user)
+    db.commit()
+    
