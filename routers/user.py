@@ -24,3 +24,7 @@ def get_users(db: Session = Depends(get_db)):
 def get_user(id: int, db: Session = Depends(get_db)):
     return db_user.get_user(db, id)
 
+@router.put('/{id}')
+def update_user(id: int, request: UserBase, db: Session = Depends(get_db)):
+    db_user.update(db, id, request)
+    return 'ok'
