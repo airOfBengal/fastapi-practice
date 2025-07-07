@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
-from routers import blog_post, user, article
+from routers import blog_post, user, article, product
 from db import models
 from db.database import engine
 from exceptions import StoryException
@@ -9,6 +9,7 @@ app = FastAPI()
 app.include_router(blog_post.router)
 app.include_router(article.router)
 app.include_router(user.router)
+app.include_router(product.router)
 
 @app.get('/')
 def index():
