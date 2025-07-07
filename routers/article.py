@@ -4,6 +4,7 @@ from db.database import get_db
 from schemas import ArticleBase, ArticleDisplay
 from db.db_article import create_article, get_articles, get_article
 from db.models import DbArticle
+from exceptions import StoryException
 
 router = APIRouter(
     prefix="/article",
@@ -16,6 +17,8 @@ def create(request: ArticleBase, db: Session = Depends(get_db)):
     """
     Create a new article.
     """
+    if request.content.startswith("Once upon a time"):
+        raise StoryException("Inappropriate content detected.")
     return create_article(db, request)
 
 @router.get("/", response_model=list[ArticleDisplay])
