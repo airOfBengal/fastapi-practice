@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import List
 
-class User(BaseModel):
+class User(BaseModel): 
     id: int
     username: str
     class Config():
@@ -14,6 +14,7 @@ class ArticleBase(BaseModel):
     creator_id: int
 
 class ArticleDisplay(BaseModel):
+    id: int
     title: str
     content: str
     published: bool
@@ -34,6 +35,7 @@ class UserBase(BaseModel):
     password: str
 
 class UserDisplay(BaseModel):
+    id: int
     username: str
     email: str
     items: List[Article] = []
